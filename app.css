@@ -621,6 +621,10 @@ body.nojs #grid{
 body.nojs li.icon{
 	contain-intrinsic-size:calc(10rem + 4px) calc(10rem + 3px);
 }
+/*** AD BLOCKER ***/
+body.noads #carbon{
+	display:none;
+}
 /*** LOADING **/
 body.loading :is(#search label,div.actions>button){
 	pointer-events:none;
