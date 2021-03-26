@@ -16,6 +16,7 @@
 			si.sort.init();
 			si.search.init();
 			document.querySelector(`main`).addEventListener(`click`,si.handler,false);
+			document.body.addEventListener(`keydown`,si.shortcuts,false);
 			document.body.classList.remove(`loading`);
 		},
 		copy(target,value){
@@ -174,6 +175,15 @@
 				}
 				return score+1;
 			}
+		},
+		shortcuts(event){
+			if(event.ctrlKey)
+				switch(event.key){
+					case`f`:
+						event.preventDefault();
+						si.search.input.focus();
+						break;
+				}
 		},
 		sort:{
 			init(){
