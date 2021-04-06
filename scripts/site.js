@@ -24,7 +24,7 @@ const simpleicons={
 		return item.style.getPropertyValue(`--color-brand`);
 	},
 	async getmodule(name){
-		let module=await import(simpleicons.url.origin+`/scripts/modules/${name}.js`);
+		let module=await import(simpleicons.url.origin+simpleicons.url.pathname+`scripts/modules/${name}.js`);
 		return module[name];
 	},
 	getsvg(item,fill){
