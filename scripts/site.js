@@ -148,10 +148,10 @@ const simpleicons={
 			let	score=name.length-query.length,
 				index=0;
 			for(let letter of query){
-				index=name.indexOf(letter,index)+1;
-				if(index===0)
-					return index;
-				score+=index;
+				index=name.indexOf(letter,index);
+				if(index===-1)
+					return 0;
+				score+=index+1;
 				index++;
 			}
 			return score;
