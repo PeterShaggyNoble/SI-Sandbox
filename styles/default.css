@@ -254,7 +254,12 @@ body.loading #search label path+path{
 	display:none;
 }
 #menu a{
+	border-radius:4px;
 	display:block;
+	transition:background var(--transition-duration) var(--transition-timing-function);
+}
+#menu a:is(:active,:focus,:hover){
+	background:var(--color-background);
 }
 /**** THEME ****/
 button.button{
@@ -327,6 +332,13 @@ button[data-copy=npm]>svg{
 }
 body:not(.nojs,.loading) button[data-copy=npm]:is(:hover,.copied)>svg{
 	opacity:1;
+}
+button[data-copy=npm] path{
+	transition:opacity var(--transition-duration) var(--transition-timing-function);
+}
+button[data-copy=npm].copied path:first-child,
+button[data-copy=npm]:not(.copied) path:last-child{
+	opacity:0;
 }
 /** FOOTER **/
 #footer{
@@ -462,12 +474,9 @@ body.loading :is(#search>button,#nav){
 		margin:.125rem;
 	}
 	#menu a{
-		border-radius:4px;
-		display:block;
 		font-size:.875rem;
 		line-height:2.5rem;
 		padding:0 .3125rem;
-		transition:background var(--transition-duration) var(--transition-timing-function);
 	}
 	#menu a:is(:active,:focus,:hover){
 		background:var(--color-background);
@@ -548,23 +557,22 @@ body.loading :is(#search>button,#nav){
 	}
 	#nav :is(#theme,ul,li){
 		display:inline-block;
-		vertical-align:middle;
+		vertical-align:top;
 	}
 	#theme{
-		margin:0 .1875rem 0 0;
-	}
-	#menu ul{
-		border-left:1px solid var(--color-grid-item-divider);
-		margin:0 0 0 .4375rem;
+		border-right:1px solid var(--color-grid-item-divider);
+		margin:0 .0625rem 0 0;
+		padding:0 .625rem 0 0;
 	}
 	#menu li{
-		margin:0 0 0 .4375rem;
+		margin:0 0 0 .125rem;
 	}
 	#menu ul:last-of-type>li:nth-of-type(4){
 		border-left:1px solid var(--color-grid-item-divider);
-		padding:0 0 0 .4375rem;
+		margin:0 0 0 .5rem;
+		padding:0 0 0 .5rem;
 	}
 	#menu a{
-		padding:0 .1875rem;
+		padding:.375rem;
 	}
 }
