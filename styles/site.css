@@ -335,6 +335,9 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 	button[data-order=color]{
 		display:none;
 	}
+	/*** CONTENT ***/
+	/**** ICON GRID ****/
+	/***** CARBON ADS *****/
 	@media(min-height:calc(27.5 * 16px + 5px)){/** 445px **/
 		#carbon{
 			grid-row:2/3;
@@ -351,20 +354,11 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 		}
 	}
 }
-@media(min-width:calc(23.625 * 16px)){/** 378px **/
-	/*** CONTENT ***/
-	/**** ICON GRID ****/
-	/***** CARBON ADS *****/
-	body.nojs #carbon{
-		grid-column:-2/-1;
-		grid-row:1/2;
-	}
-}
 @media(min-width:calc(27.25 * 16px)){/** 436px **/
 	/*** CONTENT ***/
 	/**** ICON GRID ****/
 	/***** CARBON ADS *****/
-	body:not(.nojs) #carbon{
+	#carbon{
 		grid-column:-2/-1;
 		grid-row:1/2;
 	}
@@ -380,15 +374,6 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 	/**** ICON GRID ****/
 	#grid{
 		width:100%;
-	}
-}
-@media(min-width:calc(45.375 * 16px)){/** 726px **/
-	/*** CONTENT **/
-	/**** ICON GRID ****/
-	/***** CARBON ADS *****/
-	body.nojs #carbon{
-		grid-column:-3/-1;
-		grid-row:1/2;
 	}
 }
 @media(min-width:calc(52.625 * 16px)){/** 842px **/
