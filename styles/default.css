@@ -229,7 +229,7 @@ body.loading #search label path+path{
 	appearance:none;
 	margin:0;
 }
-#clear{
+#search>button{
 	border-radius:0 4px 4px 0;
 	cursor:pointer;
 	height:var(--size-search);
@@ -238,7 +238,11 @@ body.loading #search label path+path{
 	vertical-align:middle;
 	width:var(--size-search);
 }
-#clear>svg{
+#filter:invalid+button{
+	opacity:0;
+	pointer-events:none;
+}
+#search>button>svg{
 	width:1.5rem;
 }
 /*** MENU ***/
@@ -395,8 +399,7 @@ body.loading #search label path:first-child{
 	animation:spin 1.4s linear infinite;
 	transform-origin:50% 50%;
 }
-#filter:invalid+#clear,
-body.loading :is(#sort,#nav){
+body.loading :is(#search>button,#nav){
 	opacity:0;
 	pointer-events:none;
 }
@@ -412,7 +415,6 @@ body.loading :is(#sort,#nav){
 	}
 	#menu{
 		background:var(--color-background-card);
-		border-left:1px solid var(--color-grid-item-divider);
 		bottom:0;
 		font-family:Roboto Mono,monospace;
 		font-weight:600;
@@ -426,7 +428,6 @@ body.loading :is(#sort,#nav){
 		top:calc(var(--size-search) + 2.5rem + 1px);
 		transition:transform .25s var(--transition-timing-function),opacity .25s var(--transition-timing-function);
 		width:100%;
-		max-width:22.5rem;
 	}
 	#menu::-webkit-scrollbar{
 		width:0;
@@ -436,10 +437,6 @@ body.loading :is(#sort,#nav){
 		transform:translatex(100%);
 	}
 	/***** MENU ICON *****/
-	#nav>h2{
-		border-left:1px solid var(--color-grid-item-divider);
-		padding:0 0 0 .4375rem;
-	}
 	#nav>h2 svg{
 		width:2.25rem;
 	}
@@ -481,6 +478,13 @@ body.loading :is(#sort,#nav){
 	#menu svg{
 		margin:0 .625rem 0 0;
 	}
+	@media(min-width:calc(23.75 * 16px + 1px)){/** 381px **/
+		/**** MENU ****/
+		#menu{
+			border-left:1px solid var(--color-grid-item-divider);
+			max-width:calc(22.5rem + 1px);
+		}
+	}
 	@media(max-width:calc(37.5 * 16px)){/** 600px **/
 		/*** HEADER ***/
 		#header>h1{
@@ -512,11 +516,6 @@ body.loading :is(#sort,#nav){
 	/*** HEADER **/
 	#header>h1{
 		display:none;
-	}
-	/**** MENU ****/
-	#menu{
-		border:0;
-		max-width:initial;
 	}
 }
 @media(min-width:calc(37.5 * 16px + 1px)){/** 601px **/

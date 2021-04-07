@@ -313,6 +313,10 @@ body.loading #clear{
 	opacity:0;
 	pointer-events:none;
 }
+body.loading #sort{
+	opacity:0;
+	pointer-events:none;
+}
 body.loading div.actions>button{
 	pointer-events:none;
 }
@@ -331,6 +335,21 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 	button[data-order=color]{
 		display:none;
 	}
+	@media(min-height:calc(27.5 * 16px + 5px)){/** 445px **/
+		#carbon{
+			grid-row:2/3;
+		}
+	}
+	@media(min-height:calc(38.375 * 16px + 8px)){/** 622px **/
+		#carbon{
+			grid-row:3/4;
+		}
+	}
+	@media(min-height:calc(49.25 * 16px + 12px)){/** 800px **/
+		#carbon{
+			grid-row:4/5;
+		}
+	}
 }
 @media(min-width:calc(23.625 * 16px)){/** 378px **/
 	/*** CONTENT ***/
@@ -348,15 +367,6 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 	body:not(.nojs) #carbon{
 		grid-column:-2/-1;
 		grid-row:1/2;
-	}
-	@media(max-width:calc(28.75 * 16px)){/** 460px **/
-		/*** HEADER ***/
-		/**** SORTING ****/
-		button[data-order]{
-			height:1.875rem;
-			padding:.125rem;
-			width:1.875rem;
-		}
 	}
 }
 @media(min-width:calc(43.75 * 16px + 1px)){/** 701px **/
