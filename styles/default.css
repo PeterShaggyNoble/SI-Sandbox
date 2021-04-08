@@ -267,7 +267,7 @@ body.loading #search label path+path{
 	display:block;
 	transition:background var(--transition-duration) var(--transition-timing-function);
 }
-#menu a:is(:active,:focus,:hover){
+#menu a:is(:active,:focus,:hover,.current){
 	background:var(--color-background);
 }
 /**** THEME ****/
@@ -515,7 +515,7 @@ body.loading :is(#search>button,#nav){
 			overflow:hidden;
 			width:2.25rem;
 		}
-		#header>h1>svg{
+		#header>h1 svg{
 			width:2.25rem;
 		}
 	}
@@ -544,7 +544,7 @@ body.loading :is(#search>button,#nav){
 }
 @media(min-width:calc(37.5 * 16px + 1px)){/** 601px **/
 	/*** HEADER ***/
-	#header>h1>svg{
+	#header>h1 svg{
 		display:none;
 	}
 }

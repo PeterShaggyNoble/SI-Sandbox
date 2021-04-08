@@ -16,7 +16,7 @@
 	gap:.625rem;
 	margin:auto;
 	overflow:hidden;
-	padding:.625rem .625rem 1.25rem;
+	padding:1.25rem .625rem;
 	position:relative;
 	width:calc(var(--size-canvas) + 1.25rem + 2px);
 }
@@ -33,13 +33,11 @@ body.nojs #generator::after{
 	right:0;
 	top:0;
 }
+/*** FIELDS ***/
 #generator>label{
 	font-size:.875rem;
-	padding:0 0 0 .625rem;
-	width:3.75rem;
-}
-#generator>label:nth-of-type(2){
-	text-align:right;
+	padding:0 .3125rem;
+	width:3rem;
 }
 #generator>input{
 	border:1px solid var(--color-button-border);
@@ -58,7 +56,7 @@ body.nojs #generator::after{
 	border-color:var(--color-error);
 }
 #name{
-	width:calc(100% - 9.375rem - 7ch - 1.25rem - 2px);
+	width:calc(100% - 8.125rem - 7ch - 1.25rem - 2px);
 }
 input#color{
 	text-align:center;
@@ -68,7 +66,7 @@ input#color{
 }
 #data{
 	font-family:Roboto Mono,monospace;
-	width:calc(100% - 4.375rem);
+	width:calc(100% - 3.9375rem);
 }
 #holder{
 	font-size:.875rem;
@@ -155,8 +153,14 @@ input#color{
 	margin:0 .375rem 0 0;
 	vertical-align:top;
 }
+#generator>button[data-action=upload]{
+	margin:0 0 0 .3125rem;
+}
 #generator>button[data-action=download]{
 	margin:0 0 0 auto;
+}
+#generator>button[data-action=save]{
+	margin:0 .3125rem 0 0;
 }
 input[type=file]{
 	display:none;
@@ -175,8 +179,8 @@ input[type=file]{
 	position:absolute;
 	scrollbar-color:var(--color-background-card) var(--color-background);
 	scrollbar-width:thin;
-	top:calc(var(--size-input) + .625rem + 1px);
-	transition:opacity var(--transition-duration) var(--transition-timing-function);
+	top:calc(var(--size-input) + 1.25rem + 1px);
+	transition:opacity var(--transition-duration) var(--transition-timing-function),transform var(--transition-duration) var(--transition-timing-function);
 	min-width:calc(11rem + 2px);
 }
 #list.hide{
