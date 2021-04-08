@@ -1,25 +1,14 @@
 /** DECLARE VARIABLES **/
 :root{
-	--color-error:#b00020;
 	--color-warning:#ff4438;
 	--grid-height:calc(10rem + 3px);
 	--grid-width:calc(11.75rem + 5px);
 	--grid-width-nojs:calc(10rem + 4px);
 	--size-icon:3.75rem;
-	--transition-duration:.1s;
-}
-/** BODY **/
-body{
-	align-items:stretch;
-	display:flex;
-	flex-direction:column;
 }
 /** GLOBAL STYLES **/
 svg#sprite{
 	display:none;
-}
-body:not(.nojs,.loading) button[data-copy]{
-	cursor:pointer;
 }
 button[data-copy] use{
 	transition:opacity var(--transition-duration) var(--transition-timing-function);
@@ -260,6 +249,7 @@ div.actions :is(a,button):hover{
 	background-color:var(--color-background-card);
 }
 div.actions svg{
+	fill:currentcolor;
 	vertical-align:top;
 }
 /***** WARNING ICONS *****/
@@ -365,12 +355,6 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 }
 @media(min-width:calc(43.75 * 16px + 1px)){/** 701px **/
 	/*** CONTENT **/
-	main{
-		display:flex;
-		flex-wrap:wrap;
-		gap:20px;
-		justify-content:space-between;
-	}
 	/**** ICON GRID ****/
 	#grid{
 		width:100%;

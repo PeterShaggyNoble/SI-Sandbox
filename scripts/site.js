@@ -10,11 +10,12 @@ const simpleicons={
 	},
 	async init(){
 		simpleicons.items=document.querySelectorAll(simpleicons.selectors.item);
-		simpleicons.copy=await simpleicons.getmodule(`copy`);
-		simpleicons.download=await simpleicons.getmodule(`download`);
 		simpleicons.mode=await simpleicons.getmodule(`mode`);
 		simpleicons.mode.init();
 		simpleicons.sort.init();
+		simpleicons.normalise=await simpleicons.getmodule(`normalise`);
+		simpleicons.copy=await simpleicons.getmodule(`copy`);
+		simpleicons.download=await simpleicons.getmodule(`download`);
 		simpleicons.search.init();
 		document.querySelector(`main`).addEventListener(`click`,simpleicons.handler,false);
 		document.body.addEventListener(`keydown`,simpleicons.shortcuts,false);
@@ -24,7 +25,7 @@ const simpleicons={
 		return item.style.getPropertyValue(`--color-brand`);
 	},
 	async getmodule(name){
-		let module=await import(simpleicons.url.origin+simpleicons.url.pathname+`scripts/modules/${name}.js`);
+		let module=await import(`../scripts/modules/${name}.js`);
 		return module[name];
 	},
 	getsvg(item,fill){
@@ -105,7 +106,7 @@ const simpleicons={
 			simpleicons.search.timer=setTimeout(simpleicons.search.filter,10,simpleicons.search.input.value);
 		},
 		filter(value=``,init=false){
-			value=simpleicons.search.normalise(value.trim());
+			value=simpleicons.normalise(value.trim());
 			document.body.classList.toggle(`filtered`,value);
 			if(value){
 				if(!init)
@@ -115,7 +116,7 @@ const simpleicons={
 				let noresults=true;
 				for(let item of simpleicons.items){
 					if(!simpleicons.normalised)
-						item.dataset.title=simpleicons.search.normalise(item.dataset.title);
+						item.dataset.title=simpleicons.normalise(item.dataset.title);
 					let score=simpleicons.search.score(item.dataset.title,value)+simpleicons.search.score(item.dataset.slug,value);
 					item.style.setProperty(`--order-relevance`,score);
 					item.classList.toggle(`hide`,!score);
@@ -130,19 +131,6 @@ const simpleicons={
 			}
 			if(!init)
 				history.replaceState(null,window.title,simpleicons.url);
-		},
-		normalise(value){
-			return	value.toLowerCase()
-				.replace(/đ/g,`d`)
-				.replace(/ħ/g,`h`)
-				.replace(/ı/g,`i`)
-				.replace(/ĸ/g,`k`)
-				.replace(/ŀ/g,`l`)
-				.replace(/ł/g,`l`)
-				.replace(/ß/g,`ss`)
-				.replace(/ŧ/g,`t`)
-				.normalize(`NFD`)
-				.replace(/[\u0300-\u036f]/g,``);
 		},
 		score(name,query){
 			let	score=name.length-query.length,
