@@ -138,6 +138,15 @@ input#color{
 	transition-property:background-color,border-color,color,opacity;
 	transition-timing-function:var(--transition-timing-function);
 }
+#upload{
+	margin:0 0 0 .3125rem;
+}
+#download{
+	margin:0 0 0 auto;
+}
+#save{
+	margin:0 .3125rem 0 0;
+}
 #generator>button:is(:focus,:hover){
 	background-color:var(--color-button-hover);
 	border-color:var(--color-button-hover);
@@ -152,15 +161,6 @@ input#color{
 	fill:currentcolor;
 	margin:0 .375rem 0 0;
 	vertical-align:top;
-}
-#generator>button[data-action=upload]{
-	margin:0 0 0 .3125rem;
-}
-#generator>button[data-action=download]{
-	margin:0 0 0 auto;
-}
-#generator>button[data-action=save]{
-	margin:0 .3125rem 0 0;
 }
 input[type=file]{
 	display:none;

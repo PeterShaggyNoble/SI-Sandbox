@@ -1,4 +1,5 @@
 const simpleicons={
+	input:document.getElementById(`filter`),
 	normalised:false,
 	async init(){
 		simpleicons.copy=await simpleicons.getmodule(`copy`);
@@ -8,7 +9,8 @@ const simpleicons={
 		simpleicons.normalise=await simpleicons.getmodule(`normalise`);
 		simpleicons.preview.init();
 		document.querySelector(`main`).addEventListener(`click`,simpleicons.handler,false);
-		document.getElementById(`filter`).disabled=false;
+		document.body.addEventListener(`keydown`,simpleicons.shortcuts,true);
+		simpleicons.input.disabled=false;
 		document.body.classList.remove(`loading`);
 	},
 	async getmodule(name){
@@ -40,12 +42,13 @@ const simpleicons={
 			.replace(/[^a-z0-9\-]/g,``);
 	},
 	handler(event){
+		console.log(event);
 		let target=event.target.closest(`button`);
 		if(target){
 			let data=target.dataset;
 			switch(true){
 				case data.action===`download`:
-					simpleicons.download(`data:image/svg+xml;utf8,<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>${(simpleicons.preview.text.title.textContent||`Unknown`)} icon</title><path d="${simpleicons.preview.shapes.path.getAttribute(`d`)}"/></svg>`,simpleicons.preview.text.slug.textContent);
+					simpleicons.preview.download();
 					break;
 				case data.action===`save`:
 					simpleicons.preview.canvas.toBlob(simpleicons.preview.save);
@@ -58,6 +61,29 @@ const simpleicons={
 					break;
 			}
 		}
+	},
+	shortcuts(event){
+		if(event.ctrlKey)
+			switch(event.key.toLowerCase()){
+				case`arrowup`:
+				case`up`:
+					event.preventDefault();
+					simpleicons.preview.upload();
+					break;
+				case`arrowdown`:
+				case`down`:
+					event.preventDefault();
+					simpleicons.preview.download();
+					break;
+				case`enter`:
+					event.preventDefault();
+					simpleicons.input.focus();
+					break;
+				case`s`:
+					event.preventDefault();
+					simpleicons.preview.canvas.toBlob(simpleicons.preview.save);
+					break;
+			}
 	},
 	preview:{
 		image:new Image(),
@@ -121,6 +147,9 @@ const simpleicons={
 			if(simpleicons.preview.timer)
 				clearTimeout(simpleicons.preview.timer);
 			simpleicons.preview.timer=setTimeout(simpleicons.preview.render,10,event);
+		},
+		download(){
+			simpleicons.download(`data:image/svg+xml;utf8,<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>${(simpleicons.preview.text.title.textContent||`Unknown`)} icon</title><path d="${simpleicons.preview.shapes.path.getAttribute(`d`)}"/></svg>`,simpleicons.preview.text.slug.textContent);
 		},
 		draw(){
 			let xml=new XMLSerializer();
