@@ -65,7 +65,7 @@ body[data-order=relevance] button[data-order=relevance]{
 	opacity:.5;
 	text-transform:uppercase;
 }
-/**** GRID ITEMS **/
+/**** GRID ITEMS ****/
 li.icon{
 	align-items:flex-start;
 	background:var(--color-background-card);
@@ -79,9 +79,6 @@ li.icon{
 	justify-content:flex-start;
 	overflow:hidden;
 	position:relative;
-}
-body[data-order=color] li.icon{
-	order:var(--order-color);
 }
 body[data-order=relevance] li.icon{
 	order:var(--order-relevance);
@@ -344,6 +341,10 @@ body.filtered :is(main>h2,main>pre,#carbon,li.icon.hide){
 	#carbon{
 		grid-column:-2/-1;
 		grid-row:1/2;
+	}
+	/***** GRID ITEMS *****/
+	body[data-order=color] li.icon{
+		order:var(--order-color);
 	}
 }
 @media(min-width:calc(43.75 * 16px + 1px)){/** 701px **/
