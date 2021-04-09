@@ -88,7 +88,9 @@ input#color{
 }
 #svg,
 #svg :is(path,rect,text){
-	transition:fill var(--transition-duration) var(--transition-timing-function),stroke var(--transition-duration) var(--transition-timing-function);
+	transition-duration:var(--transition-duration);
+	transition-property:fill,opacity,stroke;
+	transition-timing-function:var(--transition-timing-function);
 }
 #text>text:first-of-type{
 	font-size:25px;
@@ -208,7 +210,7 @@ input[type=file]{
 }
 /** OVERRIDES **/
 /*** LOADING ***/
-body.loading #generator>button{
+body:is(.nojs,.loading) :is(#svg :is(path,text),#generator>button){
 	opacity:0;
 	pointer-events:none;
 }
