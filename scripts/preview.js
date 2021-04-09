@@ -1,4 +1,5 @@
 const simpleicons={
+	url:new URL(location),
 	input:document.getElementById(`filter`),
 	normalised:false,
 	async init(){
@@ -42,7 +43,6 @@ const simpleicons={
 			.replace(/[^a-z0-9\-]/g,``);
 	},
 	handler(event){
-		console.log(event);
 		let target=event.target.closest(`button`);
 		if(target){
 			let data=target.dataset;
@@ -87,6 +87,7 @@ const simpleicons={
 	},
 	preview:{
 		image:new Image(),
+		param:`i`,
 		canvas:document.getElementById(`canvas`),
 		holder:document.getElementById(`holder`),
 		list:document.getElementById(`list`),
@@ -123,6 +124,13 @@ const simpleicons={
 			simpleicons.preview.height=simpleicons.preview.canvas.height;
 			simpleicons.preview.width=simpleicons.preview.canvas.width;
 			simpleicons.preview.image.addEventListener(`load`,simpleicons.preview.update,false);
+			let query=simpleicons.url.searchParams.get(simpleicons.preview.param);
+			if(query)
+				for(let item of simpleicons.preview.items)
+					if(item.dataset.slug===query){
+						simpleicons.preview.autocomplete(null,item);
+						break;
+					}
 			simpleicons.preview.draw();
 			document.getElementById(`generator`).addEventListener(`input`,simpleicons.preview.debounce,false);
 			simpleicons.preview.list.addEventListener(`click`,simpleicons.preview.autocomplete,false);
@@ -131,16 +139,18 @@ const simpleicons={
 				if(simpleicons.preview.inputs.hasOwnProperty(input))
 					simpleicons.preview.inputs[input].disabled=false;
 		},
-		autocomplete(event){
-			let target=event.target.closest(`li`);
-			if(target){
-				let data=target.firstChild.firstChild.getAttribute(`d`);
+		autocomplete(event,icon){
+			if(!icon)
+				icon=event.target.closest(`li`);
+			if(icon){
+				let data=icon.firstChild.firstChild.getAttribute(`d`);
 				simpleicons.preview.inputs.data.value=data;
 				simpleicons.preview.setpath(data);
-				simpleicons.preview.populate(null,target);
+				simpleicons.preview.populate(null,icon);
 				simpleicons.preview.inputs.name.focus();
 				simpleicons.preview.hidelist();
 				simpleicons.preview.list.scrollTo(0,0);
+				simpleicons.preview.draw();
 			}
 		},
 		debounce(event){
@@ -201,11 +211,12 @@ const simpleicons={
 					}
 			if(icon){
 				let	hex=icon.dataset.hex,
+					slug=icon.dataset.slug,
 					title=icon.dataset.title;
 				simpleicons.preview.inputs.color.value=hex;
 				simpleicons.preview.setcolor(hex);
 				simpleicons.preview.inputs.name.value=title;
-				simpleicons.preview.settitle(title,icon.dataset.slug);
+				simpleicons.preview.settitle(title,slug);
 				return true;
 			}
 			return false;
