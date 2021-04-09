@@ -119,9 +119,13 @@ input#color{
 	font-weight:700;
 	line-height:14px;
 }
+#svg[data-deprecated=false] #deprecated,
+#svg[data-renamed=false] #renamed,
+#canvas{
+	opacity:0;
+}
 #canvas{
 	left:0;
-	opacity:0;
 	top:0;
 	position:absolute;
 }

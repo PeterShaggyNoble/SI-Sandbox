@@ -218,6 +218,8 @@ const simpleicons={
 				let	hex=icon.dataset.hex,
 					slug=icon.dataset.slug,
 					title=icon.dataset.title;
+				simpleicons.preview.svg.dataset.deprecated=!!icon.dataset.deprecated;
+				simpleicons.preview.svg.dataset.renamed=!!icon.dataset.renamed;
 				simpleicons.preview.inputs.color.value=hex;
 				simpleicons.preview.setcolor(hex);
 				simpleicons.preview.inputs.name.value=title;
