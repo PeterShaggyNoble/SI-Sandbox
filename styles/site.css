@@ -210,6 +210,7 @@ aside.legal a{
 	text-decoration:underline;
 }
 aside.legal svg{
+	fill:var(--color-svg-default);
 	margin:0 .125rem 0 0;
 	width:1rem;
 }
