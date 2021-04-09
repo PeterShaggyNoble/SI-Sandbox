@@ -128,10 +128,10 @@ const simpleicons={
 			if(query)
 				for(let item of simpleicons.preview.items)
 					if(item.dataset.slug===query){
-						simpleicons.preview.autocomplete(null,item);
+						simpleicons.preview.autocomplete(null,item,true);
 						break;
 					}
-			simpleicons.preview.draw();
+			simpleicons.preview.draw(true);
 			document.getElementById(`generator`).addEventListener(`input`,simpleicons.preview.debounce,false);
 			simpleicons.preview.list.addEventListener(`click`,simpleicons.preview.autocomplete,false);
 			simpleicons.preview.inputs.name.addEventListener(`blur`,simpleicons.preview.hidelist,false);
@@ -139,7 +139,7 @@ const simpleicons={
 				if(simpleicons.preview.inputs.hasOwnProperty(input))
 					simpleicons.preview.inputs[input].disabled=false;
 		},
-		autocomplete(event,icon){
+		autocomplete(event,icon,init){
 			if(!icon)
 				icon=event.target.closest(`li`);
 			if(icon){
@@ -150,7 +150,10 @@ const simpleicons={
 				simpleicons.preview.inputs.name.focus();
 				simpleicons.preview.hidelist();
 				simpleicons.preview.list.scrollTo(0,0);
-				simpleicons.preview.draw();
+				if(!init){
+					simpleicons.url.searchParams.set(simpleicons.preview.param,icon.dataset.slug);
+					simpleicons.preview.draw();
+				}
 			}
 		},
 		debounce(event){
@@ -161,11 +164,13 @@ const simpleicons={
 		download(){
 			simpleicons.download(`data:image/svg+xml;utf8,<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>${(simpleicons.preview.text.title.textContent||`Unknown`)} icon</title><path d="${simpleicons.preview.shapes.path.getAttribute(`d`)}"/></svg>`,simpleicons.preview.text.slug.textContent);
 		},
-		draw(){
+		draw(init){
 			let xml=new XMLSerializer();
 			simpleicons.preview.image.src=URL.createObjectURL(new Blob([xml.serializeToString(simpleicons.preview.svg)],{
 				type:`image/svg+xml;charset=utf-8`
 			}));
+			if(!init)
+				history.replaceState(null,window.title,simpleicons.url);
 		},
 		getcolor(hex){
 			if(simpleicons.getluminance(hex)<160){
@@ -234,6 +239,7 @@ const simpleicons={
 			input.remove();
 		},
 		render(event){
+			simpleicons.url.searchParams.delete(simpleicons.preview.param);
 			let	trusted=event&&event.isTrusted,
 				target=event&&event.target;
 			if(!trusted||target===simpleicons.preview.inputs.color){
