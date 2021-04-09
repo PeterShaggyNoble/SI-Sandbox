@@ -186,12 +186,18 @@ button[data-copy]:not(.copied) use:last-child{
 	font-weight:600;
 	flex:0 0 auto;
 	font-size:1.25rem;
-	line-height:1.5rem;
+	line-height:1rem;
 	margin:0 1.25rem 0 0;
 	white-space:nowrap;
 }
 #header svg{
 	fill:currentcolor;
+}
+#version{
+	display:block;
+	font-size:.75rem;
+	font-weight:400;
+	text-align:right;
 }
 /*** SEARCH ***/
 #search{
@@ -525,6 +531,9 @@ body.loading :is(#search>button,#nav){
 		}
 		#header>h1 svg{
 			width:2.25rem;
+		}
+		#version{
+			display:none;
 		}
 	}
 }
