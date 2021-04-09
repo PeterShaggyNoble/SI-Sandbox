@@ -113,6 +113,10 @@ const simpleicons={
 			text:document.querySelectorAll(`#shields text.text`),
 			colors:{}
 		},
+		status:{
+			deprecated:document.getElementById(`deprecated`),
+			renamed:document.getElementById(`renamed`)
+		},
 		text:{
 			hex:document.getElementById(`hex`),
 			slug:document.getElementById(`slug`),
@@ -218,8 +222,8 @@ const simpleicons={
 				let	hex=icon.dataset.hex,
 					slug=icon.dataset.slug,
 					title=icon.dataset.title;
-				simpleicons.preview.svg.dataset.deprecated=!!icon.dataset.deprecated;
-				simpleicons.preview.svg.dataset.renamed=!!icon.dataset.renamed;
+				simpleicons.preview.status.deprecated.setAttribute(`fill-opacity`,+!!icon.dataset.deprecated);
+				simpleicons.preview.status.renamed.setAttribute(`fill-opacity`,+!!icon.dataset.renamed);
 				simpleicons.preview.inputs.color.value=hex;
 				simpleicons.preview.setcolor(hex);
 				simpleicons.preview.inputs.name.value=title;
@@ -242,6 +246,8 @@ const simpleicons={
 		},
 		render(event){
 			simpleicons.url.searchParams.delete(simpleicons.preview.param);
+			simpleicons.preview.status.deprecated.setAttribute(`fill-opacity`,`0`);
+			simpleicons.preview.status.renamed.setAttribute(`fill-opacity`,`0`);
 			let	trusted=event&&event.isTrusted,
 				target=event&&event.target;
 			if(!trusted||target===simpleicons.preview.inputs.color){
