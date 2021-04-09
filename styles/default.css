@@ -156,6 +156,14 @@ svg{
 }
 body:not(.nojs,.loading) button[data-copy]{
 	cursor:pointer;
+	user-select:none;
+}
+button[data-copy] use{
+	transition:opacity var(--transition-duration) var(--transition-timing-function);
+}
+button[data-copy].copied use:first-child,
+button[data-copy]:not(.copied) use:last-child{
+	opacity:0;
 }
 /** HEADER **/
 #header{
