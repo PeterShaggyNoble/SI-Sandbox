@@ -609,7 +609,7 @@ body.loading :is(#search>button,#nav){
 	#menu li{
 		margin:0 0 0 .125rem;
 	}
-	#menu ul:last-of-type>li:nth-of-type(5){
+	#menu ul:last-of-type>li:nth-of-type(6){
 		border-left:1px solid var(--color-grid-item-divider);
 		margin:0 0 0 .5rem;
 		padding:0 0 0 .5rem;
