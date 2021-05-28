@@ -35,8 +35,7 @@ const simpleicons={
 			.replace(/ß/g,`ss`)
 			.replace(/ŧ/g,`t`)
 			.normalize(`NFD`)
-			.replace(/[\u0300-\u036f]/g,``)
-			.replace(/[^a-z0-9\-]/g,``);
+			.replace(/[^a-z0-9]/g,``);
 	},
 	handler(event){
 		let target=event.target.closest(`button`);
