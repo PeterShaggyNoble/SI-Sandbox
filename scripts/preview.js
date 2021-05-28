@@ -24,12 +24,8 @@ const simpleicons={
 	getslug(title){
 		return	title.toLowerCase()
 			.replace(/\+/g,`plus`)
-			.replace(/^\./,`dot-`)
-			.replace(/\.$/,`-dot`)
-			.replace(/\./g,`-dot-`)
-			.replace(/^&/,`and-`)
-			.replace(/&$/,`-and`)
-			.replace(/&/g,`-and-`)
+			.replace(/\./g,`dot`)
+			.replace(/&/g,`and`)
 			.replace(/đ/g,`d`)
 			.replace(/ħ/g,`h`)
 			.replace(/ı/g,`i`)
@@ -39,8 +35,7 @@ const simpleicons={
 			.replace(/ß/g,`ss`)
 			.replace(/ŧ/g,`t`)
 			.normalize(`NFD`)
-			.replace(/[\u0300-\u036f]/g,``)
-			.replace(/[^a-z0-9\-]/g,``);
+			.replace(/[^a-z0-9]/g,``);
 	},
 	handler(event){
 		let target=event.target.closest(`button`);
