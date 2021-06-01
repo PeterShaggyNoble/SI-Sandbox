@@ -161,7 +161,7 @@ const simpleicons={
 			simpleicons.preview.timer=setTimeout(simpleicons.preview.render,10,event);
 		},
 		download(){
-			simpleicons.download(`data:image/svg+xml;utf8,<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>${(simpleicons.preview.text.title.textContent||`Unknown`)} icon</title><path d="${simpleicons.preview.shapes.path.getAttribute(`d`)}"/></svg>`,simpleicons.preview.text.slug.textContent);
+			simpleicons.download(`data:image/svg+xml;utf8,<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>${(simpleicons.preview.text.title.textContent||`Unknown`)}</title><path d="${simpleicons.preview.shapes.path.getAttribute(`d`)}"/></svg>`,simpleicons.preview.text.slug.textContent);
 		},
 		draw(init){
 			let xml=new XMLSerializer();
@@ -199,7 +199,7 @@ const simpleicons={
 					let	icon=simpleicons.preview.populate(data),
 						title=svg.querySelector(`title`);
 					if(!icon&&title){
-						title=title.firstChild.nodeValue.replace(/ icon$/,``);
+						title=title.firstChild.nodeValue;
 						simpleicons.preview.inputs.name.value=title;
 					}
 					simpleicons.preview.render();
