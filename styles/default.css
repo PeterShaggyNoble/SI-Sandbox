@@ -154,6 +154,9 @@ svg{
 	vertical-align:middle;
 	width:1.5rem;
 }
+svg#sprite{
+	display:none;
+}
 body:not(.nojs,.loading) button[data-copy]{
 	cursor:pointer;
 	user-select:none;

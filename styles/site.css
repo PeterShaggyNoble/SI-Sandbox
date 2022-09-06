@@ -6,10 +6,6 @@
 	--grid-width-nojs:calc(10rem + 4px);
 	--size-icon:3.75rem;
 }
-/** GLOBAL STYLES **/
-svg#sprite{
-	display:none;
-}
 /*** SORTING ***/
 #sort{
 	flex:0 0 auto;
