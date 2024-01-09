@@ -5,8 +5,8 @@
 	--color-dark:#000000;
 	--color-error:#b00020;
 	--color-light:#ffffff;
-	--color-twitter:#1da1f2;
-	--color-twitter-hover:#1da1f2cc;
+	--color-x:#000000;
+	--color-x-hover:#000000cc;
 	--size-search:2.5rem;
 	--transition-duration:.1s;
 	--transition-timing-function:linear;
@@ -407,7 +407,7 @@ body:not(.nojs,.loading) #npm>button:is(:hover,.copied)>svg{
 }
 /*** TWITTER LINK ***/
 #twitter>a{
-	background:var(--color-twitter);
+	background:var(--color-x);
 	border-radius:4px;
 	color:var(--color-light);
 	display:inline-block;
@@ -419,7 +419,7 @@ body:not(.nojs,.loading) #npm>button:is(:hover,.copied)>svg{
 	white-space:nowrap;
 }
 #twitter>a:is(:active,:focus,:hover){
-	background:var(--color-twitter-hover);
+	background:var(--color-x-hover);
 }
 #twitter svg{
 	margin:0 .625rem 0 0;
