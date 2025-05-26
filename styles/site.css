@@ -2,7 +2,8 @@
 :root{
 	--color-warning:#ff4438;
 	--grid-height:calc(10rem + 3px);
-	--grid-width:calc(11.75rem + 5px);
+/*	--grid-width:calc(11.75rem + 5px);*/
+	--grid-width:calc(10rem + 4px);
 	--grid-width-nojs:calc(10rem + 4px);
 	--size-icon:3.75rem;
 }

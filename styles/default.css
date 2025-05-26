@@ -5,8 +5,10 @@
 	--color-dark:#000000;
 	--color-error:#b00020;
 	--color-light:#ffffff;
-	--color-x:#000000;
-	--color-x-hover:#000000cc;
+	--color-bluesky:#0285ff;
+	--color-bluesky-hover:#0285ffcc;
+/*	--color-x:#000000;
+	--color-x-hover:#000000cc;*/
 	--size-search:2.5rem;
 	--transition-duration:.1s;
 	--transition-timing-function:linear;
@@ -405,8 +407,27 @@ body:not(.nojs,.loading) #npm>button:is(:hover,.copied)>svg{
 	vertical-align:top;
 	width:1rem;
 }
+/*** BLUESKY LINK ***/
+#bluesky>a{
+	background:var(--color-bluesky);
+	border-radius:4px;
+	color:var(--color-light);
+	display:inline-block;
+	font-size:.875rem;
+	font-weight:500;
+	line-height:1.5rem;
+	padding:.75rem 1.25rem;
+	transition:background var(--transition-duration) var(--transition-timing-function);
+	white-space:nowrap;
+}
+#bluesky>a:is(:active,:focus,:hover){
+	background:var(--color-bluesky-hover);
+}
+#bluesky svg{
+	margin:0 .625rem 0 0;
+}
 /*** TWITTER LINK ***/
-#twitter>a{
+/*#twitter>a{
 	background:var(--color-x);
 	border-radius:4px;
 	color:var(--color-light);
@@ -423,7 +444,7 @@ body:not(.nojs,.loading) #npm>button:is(:hover,.copied)>svg{
 }
 #twitter svg{
 	margin:0 .625rem 0 0;
-}
+}*/
 /** OVERRIDES **/
 /*** NO JAVASCRIPT ***/
 body.nojs :is(#search,#theme){
@@ -448,7 +469,7 @@ body.loading :is(#search>button,#nav){
 	pointer-events:none;
 }
 /** BREAKPOINTS **/
-@media(max-width:calc(62.5 * 16px)){/** 1000px**/
+@media(max-width:calc(66 * 16px)){/** 1056px**/
 	/*** HEADER ***/
 	/**** MENU ***/
 	#theme{
@@ -594,7 +615,7 @@ body.loading :is(#search>button,#nav){
 		justify-content:space-between;
 	}
 }
-@media(min-width:calc(62.5 * 16px + 1px)){/** 1001px **/
+@media(min-width:calc(66 * 16px + 1px)){/** 1057px **/
 	/*** HEADER ***/
 	/**** MENU ****/
 	#nav :is(h2,h3){
