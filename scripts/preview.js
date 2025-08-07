@@ -118,10 +118,12 @@ const simpleicons={
 			title:document.getElementById(`title`)
 		},
 		init(){
+			const devicePixelRatio = window.devicePixelRatio > 1 ? window.devicePixelRatio : 2;
+			simpleicons.preview.canvas.height = simpleicons.preview.canvas.height * devicePixelRatio;
+			simpleicons.preview.canvas.width = simpleicons.preview.canvas.width * devicePixelRatio;
+			simpleicons.preview.canvas.getContext(`2d`).scale(devicePixelRatio, devicePixelRatio);
 			simpleicons.preview.items=simpleicons.preview.list.querySelectorAll(`li`);
 			simpleicons.preview.context=simpleicons.preview.canvas.getContext(`2d`);
-			simpleicons.preview.height=simpleicons.preview.canvas.height;
-			simpleicons.preview.width=simpleicons.preview.canvas.width;
 			simpleicons.preview.image.addEventListener(`load`,simpleicons.preview.update,false);
 			let query=simpleicons.url.searchParams.get(simpleicons.preview.param);
 			if(query)
